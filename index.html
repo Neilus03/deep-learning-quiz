@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEEP LEARNING QUIZ</title>
-<style>
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEEP LEARNING QUIZ</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-  h1 {
-    text-align: center;
-  }
+    h1 {
+      text-align: center;
+    }
 
-  button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
+    button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
 
-  button:hover {
-    opacity: 0.8;
-  }
+    button:hover {
+      opacity: 0.8;
+    }
 
-  .question-container {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
+    .question-container {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
 
-  .question {
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: bold;
-  }
+    .question {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-  .answer-button {
-    background-color: #fff;
-    color: #333;
-  }
+    .answer-button {
+      background-color: #fff;
+      color: #333;
+    }
 
-  .correct-button {
-    background-color: #5cb85c;
-    color: #fff;
-  }
+    .correct-button {
+      background-color: #5cb85c;
+      color: #fff;
+    }
 
-  .incorrect-button {
-    background-color: #d9534f;
-    color: #fff;
-  }
-</style>
+    .incorrect-button {
+      background-color: #d9534f;
+      color: #fff;
+    }
+  </style>
 <script>
   const questions = [
     {
@@ -335,63 +335,40 @@
   }
   ];
 
-  function renderQuestions() {
-    const container = document.getElementById('container');
+    function renderQuestions() {
+      const container = document.getElementById('container');
 
-    questions.forEach((question, index) => {
-      const questionContainer = document.createElement('div');
-      questionContainer.classList.add('question-container');
+      questions.forEach((question, index) => {
+        const questionContainer = document.createElement('div');
+        questionContainer.classList.add('question-container');
 
-      const questionText = document.createElement('div');
-      questionText.classList.add('question');
-      questionText.textContent = `${index + 1}. ${question.question}`;
-      questionContainer.appendChild(questionText);
+        const questionText = document.createElement('div');
+        questionText.classList.add('question');
+        questionText.textContent = `${index + 1}. ${question.question}`;
+        questionContainer.appendChild(questionText);
 
-      const trueButton = createAnswerButton('True', index, true);
-      questionContainer.appendChild(trueButton);
+        const trueButton = createAnswerButton('True', index, true);
+        questionContainer.appendChild(trueButton);
 
-      const falseButton = createAnswerButton('False', index, false);
-      questionContainer.appendChild(falseButton);
+        const falseButton = createAnswerButton('False', index, false);
+        questionContainer.appendChild(falseButton);
 
-      container.appendChild(questionContainer);
-    });
-  }
-
-  function createAnswerButton(text, questionIndex, answer) {
-    const button = document.createElement('button');
-    button.classList.add('answer-button');
-    button.textContent = text;
-
-    button.addEventListener('click', () => {
-      checkAnswer(questionIndex, answer, button);
-    });
-
-    return button;
-  }
-
-  function checkAnswer(questionIndex, userAnswer, button) {
-    const correctAnswer = questions[questionIndex].answer === 'True';
-
-    if (correctAnswer === userAnswer) {
-      button.classList.remove('answer-button');
-      button.classList.add('correct-button');
-    } else {
-      button.classList.remove('answer-button');
-      button.classList.add('incorrect-button');
+        container.appendChild(questionContainer);
+      });
     }
 
-    // Disable buttons after the user has made a choice
-    const buttons = document.querySelectorAll(`[data-question="${questionIndex}"]`);
-    buttons.forEach((button) => {
-      button.disabled = true;
-    });
-  }
+    function createAnswerButton(text, questionIndex, answer) {
+      const button = document.createElement('button');
+      button.classList.add('answer-button');
+      button.textContent = text;
+      button.dataset.question = questionIndex;
 
-  document.addEventListener('DOMContentLoaded', renderQuestions);
-</script>
-</head>
-<body>
-  <h1>DEEP LEARNING QUIZ</h1>
-  <div id="container"></div>
-</body>
-</html>
+      button.addEventListener('click', () => {
+        checkAnswer(questionIndex, answer, button);
+      });
+
+      return button;
+    }
+
+    function checkAnswer(questionIndex, userAnswer, button) {
+      const correctAnswer
