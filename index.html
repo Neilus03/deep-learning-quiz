@@ -1,344 +1,336 @@
-!DOCTYPE html
-html lang=en
-head
-meta charset=UTF-8
-meta name=viewport content=width=device-width, initial-scale=1.0
-titleDEEP LEARNING QUIZtitle
-style
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEP LEARNING QUIZ</title>
+<style>
   body {
-    font-family Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   h1 {
-    text-align center;
+    text-align: center;
   }
 
   button {
-    margin 5px;
-    padding 10px;
-    font-size 16px;
-    border none;
-    border-radius 5px;
-    cursor pointer;
-    transition all 0.2s ease-in-out;
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
   }
 
-  buttonhover {
-    opacity 0.8;
+  button:hover {
+    opacity: 0.8;
   }
 
   .question-container {
-    margin-bottom 20px;
-    padding 20px;
-    border 1px solid #ccc;
-    border-radius 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
   }
 
   .question {
-    margin-bottom 10px;
-    font-size 18px;
-    font-weight bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
   }
 
   .answer-button {
-    background-color #fff;
-    color #333;
+    background-color: #fff;
+    color: #333;
   }
 
   .correct-button {
-    background-color #5cb85c;
-    color #fff;
+    background-color: #5cb85c;
+    color: #fff;
   }
 
   .incorrect-button {
-    background-color #d9534f;
-    color #fff;
+    background-color: #d9534f;
+    color: #fff;
   }
-style
-script
+</style>
+<script>
   const questions = [
     {
-    question A feed-forward neural network with a single hidden layer and a sufficient number of hidden neurons can approximate any continuous function.,
-    answer True
+    question: "A feed-forward neural network with a single hidden layer and a sufficient number of hidden neurons can approximate any continuous function.",
+    answer: "True"
   },
   {
-    question Leaky ReLU activation functions are more likely to suffer from the vanishing gradient problem compared to sigmoid activation functions.,
-    answer False
+    question: "Leaky ReLU activation functions are more likely to suffer from the vanishing gradient problem compared to sigmoid activation functions.",
+    answer: "False"
   },
   {
-    question Gradient clipping is a technique used to prevent the exploding gradient problem in deep learning.,
-    answer True
+    question: "Gradient clipping is a technique used to prevent the exploding gradient problem in deep learning.",
+    answer: "True"
   },
   {
-    question ZCA Whitening is a method of whitening that does not preserve the original orientation of the features in the dataset.,
-    answer False
+    question: "ZCA Whitening is a method of whitening that does not preserve the original orientation of the features in the dataset.",
+    answer: "False"
   },
   {
-    question The Nesterov Accelerated Gradient (NAG) optimization algorithm is an extension of momentum that incorporates the gradient's future position.,
-    answer True
+    question: "The Nesterov Accelerated Gradient (NAG) optimization algorithm is an extension of momentum that incorporates the gradient's future position.",
+    answer: "True"
   },
   {
-    question The RMSProp optimization algorithm is specifically designed to resolve the diminishing learning rates problem in the AdaGrad algorithm.,
-    answer True
+    question: "The RMSProp optimization algorithm is specifically designed to resolve the diminishing learning rates problem in the AdaGrad algorithm.",
+    answer: "True"
   },
   {
-    question Weight decay is a form of L1 regularization that adds a penalty term to the loss function, discouraging large weight values and promoting sparsity.,
-    answer False
+    question: "Weight decay is a form of L1 regularization that adds a penalty term to the loss function, discouraging large weight values and promoting sparsity.",
+    answer: "False"
   },
   {
-    question Dropout is a regularization technique that involves setting a random fraction of input units to zero during training to prevent overfitting.,
-    answer True
+    question: "Dropout is a regularization technique that involves setting a random fraction of input units to zero during training to prevent overfitting.",
+    answer: "True"
   },
   {
-    question Data augmentation is a technique used to artificially increase the size of the training dataset by applying various transformations to the original data.,
-    answer True
+    question: "Data augmentation is a technique used to artificially increase the size of the training dataset by applying various transformations to the original data.",
+    answer: "True"
   },
   {
-    question A learning rate scheduler is a technique used to adjust the learning rate during training, usually increasing it as the number of training iterations increases.,
-    answer False
+    question: "A learning rate scheduler is a technique used to adjust the learning rate during training, usually increasing it as the number of training iterations increases.",
+    answer: "False"
   },
   {
-    question Convolutional Neural Networks (CNNs) employ weight sharing, which reduces the number of parameters in the model, making it more efficient to train.,
-    answer True
+    question: "Convolutional Neural Networks (CNNs) employ weight sharing, which reduces the number of parameters in the model, making it more efficient to train.",
+    answer: "True"
   },
   {
-    question The use of dilated convolutions in a CNN architecture allows the model to have a larger receptive field without increasing the number of parameters significantly.,
-    answer True
-  },
-    {
-    question Vectorization is only useful for small datasets and can actually slow down the computations when used with large datasets.,
-    answer False
-  },
-  {
-    question Whitening is a computationally expensive method that is rarely used in practice.,
-    answer False
-  },
-  {
-    question The transformer architecture, which relies on self-attention mechanisms, has become the foundation for many state-of-the-art natural language processing models.,
-    answer True
-  },
-{
-    question The perceptron learning algorithm is guaranteed to find a perfect linear separator for non-linearly separable data.,
-    answer False
-  },
-  {
-    question In a feedforward neural network, information flows in both directions, forward and backward.,
-    answer False
-  },
-  {
-    question The backpropagation algorithm is used to compute the gradients of the loss function with respect to each weight by using the chain rule.,
-    answer True
-  },
-  {
-    question Autograd is an automatic differentiation system that can compute gradients for any differentiable function.,
-    answer True
-  },
-  {
-    question In Stochastic Gradient Descent (SGD), the entire dataset is used for each update step.,
-    answer False
-  },
-  {
-    question Mini-batch Gradient Descent is a compromise between Batch Gradient Descent and Stochastic Gradient Descent, using a subset of the data for each update step.,
-    answer True
-  },
-  {
-    question The Rectified Linear Unit (ReLU) activation function is defined as f(x) = max(0, x).,
-    answer True
-  },
-  {
-    question The cross-entropy loss is typically used for regression problems.,
-    answer False
-  },
-  {
-    question Proper parameter initialization is important for ensuring the stability and efficiency of the training process.,
-    answer True
-  },
-  {
-    question The Adam optimization algorithm combines the ideas of momentum and adaptive learning rates.,
-    answer True
-  },
-  {
-    question L2 regularization is also known as ridge regression.,
-    answer True
-  },
-  {
-    question 1.5 A computational graph can only be used to represent linear operations.,
-    answer False
-  },
-  {
-    question Batch normalization is a technique used to improve the training of deep neural networks by normalizing the inputs to each layer.,
-    answer True
-  },
-  {
-    question In a CNN, max-pooling layers are used to reduce the spatial dimensions of the feature maps.,
-    answer True
-  },
-  {
-    question Fully connected layers in a CNN are responsible for learning spatial hierarchies of features.,
-    answer False
-  },
-  {
-    question A 1x1 convolution is used to reduce the number of channels in a feature map without changing its spatial dimensions.,
-    answer True
+    question: "The use of dilated convolutions in a CNN architecture allows the model to have a larger receptive field without increasing the number of parameters significantly.",
+    answer: "True"
   },
     {
-    question In the McCulloch-Pitts model of the perceptron if excitatory neurons activated are more than inhibitory neurons, they will make the neuron fire, regardless of the inhibitory neurons being activated or not. ,
-    answer False
+    question: "Vectorization is only useful for small datasets and can actually slow down the computations when used with large datasets.",
+    answer: "False"
   },
   {
-    question In a multilayer feedforward network, information flows in both forward and backward directions, allowing the model to make predictions and update the weights accordingly.,
-    answer False
+    question: "Whitening is a computationally expensive method that is rarely used in practice.",
+    answer: "False"
   },
   {
-    question Backpropagation is an algorithm used to compute the gradients of the loss function with respect to each weight by using the chain rule.,
-    answer True
-  },
-  {
-    question Autograd is a deep learning library that can automatically compute gradients for any differentiable function.,
-    answer True
-  },
-  {
-    question Backpropagation is the process of computing the gradients of the loss function with respect to the model's parameters.,
-    answer True
-  },
-  {
-    question In Stochastic Gradient Descent (SGD), the entire dataset is used for each update step.,
-    answer False
-  },
-  {
-    question The ReLU activation function is defined as f(x) = max(0, x) and is commonly used in deep neural networks.,
-    answer True
-  },
-  {
-    question Cross-entropy loss is commonly used for classification problems, while mean squared error loss is used for regression problems.,
-    answer True
-  },
-  {
-    question Xavier initialization is a commonly used method for initializing the weights of deep neural networks.,
-    answer True
-  },
-  {
-    question The Adam optimization algorithm is a variant of stochastic gradient descent that combines the ideas of momentum and adaptive learning rates.,
-    answer True
-  },
-  {
-    question In a computational graph, the chain rule is used to compute the gradient of the loss with respect to the input.,
-    answer False
-  },
-  {
-    question L1 regularization adds a penalty term to the loss function that discourages large weight values and promotes sparsity.,
-    answer True
-  },
-  {
-    question Dropout is a regularization technique that involves setting a random fraction of input units to zero during training to prevent overfitting.,
-    answer True
-  },
-  {
-    question In a convolutional neural network, convolutional layers are responsible for learning spatial hierarchies of features.,
-    answer True
-  },
-  {
-    question Pooling layers in a CNN are used to increase the spatial resolution of the feature maps.,
-    answer False
-  },
-  {
-    question The use of dilated convolutions in a CNN architecture allows the model to have a larger receptive field without increasing the number of parameters significantly.,
-    answer True
-  },
-  {
-    question A multilayer feedforward network can be used to classify non-linearly separable data.,
-    answer True
-  },
-  {
-    question In a multilayer feedforward network, information flows only in the forward direction, from input to output.,
-    answer True
-  },
-  {
-    question The backpropagation algorithm is only used to compute the gradients of the loss function with respect to the output layer weights.,
-    answer False
+    question: "The transformer architecture, which relies on self-attention mechanisms, has become the foundation for many state-of-the-art natural language processing models.",
+    answer: "True"
   },
 {
-    question A feed-forward neural network with a single hidden layer and a sufficient number of hidden neurons can approximate any continuous function.,
-    answer True
+    question: "The perceptron learning algorithm is guaranteed to find a perfect linear separator for non-linearly separable data.",
+    answer: "False"
   },
   {
-    question Multilayer feedforward networks are capable of universal approximation.,
-    answer True
+    question: "In a feedforward neural network, information flows in both directions, forward and backward.",
+    answer: "False"
   },
   {
-    question The perceptron algorithm can only classify linearly separable data.,
-    answer True
+    question: "The backpropagation algorithm is used to compute the gradients of the loss function with respect to each weight by using the chain rule.",
+    answer: "True"
   },
   {
-    question The backpropagation algorithm is only used for supervised learning.,
-    answer False
+    question: "Autograd is an automatic differentiation system that can compute gradients for any differentiable function.",
+    answer: "True"
   },
   {
-    question The ReLU activation function can output negative values.,
-    answer False
+    question: "In Stochastic Gradient Descent (SGD), the entire dataset is used for each update step.",
+    answer: "False"
   },
   {
-    question Autograd is a method for automatic differentiation of a computational graph.,
-    answer True
+    question: "Mini-batch Gradient Descent is a compromise between Batch Gradient Descent and Stochastic Gradient Descent, using a subset of the data for each update step.",
+    answer: "True"
   },
   {
-    question In stochastic gradient descent, the learning rate is always updated after each iteration.,
-    answer False
+    question: "The Rectified Linear Unit (ReLU) activation function is defined as f(x) = max(0, x).",
+    answer: "True"
   },
   {
-    question Momentum is a method that uses a running average of gradients to update the weights.,
-    answer True
+    question: "The cross-entropy loss is typically used for regression problems.",
+    answer: "False"
   },
   {
-    question The softmax activation function is commonly used for multi-class classification.,
-    answer True
+    question: "Proper parameter initialization is important for ensuring the stability and efficiency of the training process.",
+    answer: "True"
   },
   {
-    question Cross-entropy loss is commonly used as the loss function for classification tasks.,
-    answer True
+    question: "The Adam optimization algorithm combines the ideas of momentum and adaptive learning rates.",
+    answer: "True"
   },
   {
-    question Glorot initialization (Xavier initialization) sets the standard deviation of the weights based on the number of inputs and outputs of the layer.,
-    answer True
+    question: "L2 regularization is also known as ridge regression.",
+    answer: "True"
   },
   {
-    question The He initialization method only works well for shallow neural networks and should not be applied to deep neural networks due to vanishing gradients.,
-    answer False
+    question: "Batch normalization is a technique used to improve the training of deep neural networks by normalizing the inputs to each layer.",
+    answer: "True"
   },
   {
-    question In the Adam optimizer, the learning rate is adaptive and varies for each parameter.,
-    answer True
+    question: "In a CNN, max-pooling layers are used to reduce the spatial dimensions of the feature maps.",
+    answer: "True"
   },
   {
-    question L1 regularization can be used to induce sparsity in the learned weights.,
-    answer True
+    question: "Fully connected layers in a CNN are responsible for learning spatial hierarchies of features.",
+    answer: "False"
   },
   {
-    question Batch normalization can only be applied to convolutional neural networks.,
-    answer False
+    question: "A 1x1 convolution is used to reduce the number of channels in a feature map without changing its spatial dimensions.",
+    answer: "True"
+  },
+    {
+    question: "In the McCulloch-Pitts model of the perceptron if excitatory neurons activated are more than inhibitory neurons, they will make the neuron fire, regardless of the inhibitory neurons being activated or not. ",
+    answer: "False"
   },
   {
-    question Dropout is a method to prevent overfitting by dropping out every neuron in a layer during training.,
-    answer False
+    question: "In a multilayer feedforward network, information flows in both forward and backward directions, allowing the model to make predictions and update the weights accordingly.",
+    answer: "False"
   },
   {
-    question Convolutional neural networks can only be used for image classification tasks.,
-    answer False
+    question: "Backpropagation is an algorithm used to compute the gradients of the loss function with respect to each weight by using the chain rule.",
+    answer: "True"
   },
   {
-    question The pooling layer in a CNN is used to reduce the dimensionality of the input.,
-    answer True
+    question: "Autograd is a deep learning library that can automatically compute gradients for any differentiable function.",
+    answer: "True"
   },
   {
-    question The weights in the convolutional layers of a CNN are shared across different regions of the input.,
-    answer True
+    question: "Backpropagation is the process of computing the gradients of the loss function with respect to the model's parameters.",
+    answer: "True"
+  },
+  {
+    question: "In Stochastic Gradient Descent (SGD), the entire dataset is used for each update step.",
+    answer: "False"
+  },
+  {
+    question: "The ReLU activation function is defined as f(x) = max(0, x) and is commonly used in deep neural networks.",
+    answer: "True"
+  },
+  {
+    question: "Cross-entropy loss is commonly used for classification problems, while mean squared error loss is used for regression problems.",
+    answer: "True"
+  },
+  {
+    question: "Xavier initialization is a commonly used method for initializing the weights of deep neural networks.",
+    answer: "True"
+  },
+  {
+    question: "The Adam optimization algorithm is a variant of stochastic gradient descent that combines the ideas of momentum and adaptive learning rates.",
+    answer: "True"
+  },
+  {
+    question: "L1 regularization adds a penalty term to the loss function that discourages large weight values and promotes sparsity.",
+    answer: "True"
+  },
+  {
+    question: "Dropout is a regularization technique that involves setting a random fraction of input units to zero during training to prevent overfitting.",
+    answer: "True"
+  },
+  {
+    question: "In a convolutional neural network, convolutional layers are responsible for learning spatial hierarchies of features.",
+    answer: "True"
+  },
+  {
+    question: "Pooling layers in a CNN are used to increase the spatial resolution of the feature maps.",
+    answer: "False"
+  },
+  {
+    question: "The use of dilated convolutions in a CNN architecture allows the model to have a larger receptive field without increasing the number of parameters significantly.",
+    answer: "True"
+  },
+  {
+    question: "A multilayer feedforward network can be used to classify non-linearly separable data.",
+    answer: "True"
+  },
+  {
+    question: "In a multilayer feedforward network, information flows only in the forward direction, from input to output.",
+    answer: "True"
+  },
+  {
+    question: "The backpropagation algorithm is only used to compute the gradients of the loss function with respect to the output layer weights.",
+    answer: "False"
+  },
+{
+    question: "A feed-forward neural network with a single hidden layer and a sufficient number of hidden neurons can approximate any continuous function.",
+    answer: "True"
+  },
+  {
+    question: "Multilayer feedforward networks are capable of universal approximation.",
+    answer: "True"
+  },
+  {
+    question: "The perceptron algorithm can only classify linearly separable data.",
+    answer: "True"
+  },
+  {
+    question: "The backpropagation algorithm is only used for supervised learning.",
+    answer: "False"
+  },
+  {
+    question: "The ReLU activation function can output negative values.",
+    answer: "False"
+  },
+  {
+    question: "Autograd is a method for automatic differentiation of a computational graph.",
+    answer: "True"
+  },
+  {
+    question: "In stochastic gradient descent, the learning rate is always updated after each iteration.",
+    answer: "False"
+  },
+  {
+    question: "Momentum is a method that uses a running average of gradients to update the weights.",
+    answer: "True"
+  },
+  {
+    question: "The softmax activation function is commonly used for multi-class classification.",
+    answer: "True"
+  },
+  {
+    question: "Cross-entropy loss is commonly used as the loss function for classification tasks.",
+    answer: "True"
+  },
+  {
+    question: "Glorot initialization (Xavier initialization) sets the standard deviation of the weights based on the number of inputs and outputs of the layer.",
+    answer: "True"
+  },
+  {
+    question: "The He initialization method only works well for shallow neural networks and should not be applied to deep neural networks due to vanishing gradients.",
+    answer: "False"
+  },
+  {
+    question: "In the Adam optimizer, the learning rate is adaptive and varies for each parameter.",
+    answer: "True"
+  },
+  {
+    question: "L1 regularization can be used to induce sparsity in the learned weights.",
+    answer: "True"
+  },
+  {
+    question: "Batch normalization can only be applied to convolutional neural networks.",
+    answer: "False"
+  },
+  {
+    question: "Dropout is a method to prevent overfitting by dropping out every neuron in a layer during training.",
+    answer: "False"
+  },
+  {
+    question: "Convolutional neural networks can only be used for image classification tasks.",
+    answer: "False"
+  },
+  {
+    question: "The pooling layer in a CNN is used to reduce the dimensionality of the input.",
+    answer: "True"
+  },
+  {
+    question: "The weights in the convolutional layers of a CNN are shared across different regions of the input.",
+    answer: "True"
   }
   ];
 
   function renderQuestions() {
     const container = document.getElementById('container');
 
-    questions.forEach((question, index) = {
+    questions.forEach((question, index) => {
       const questionContainer = document.createElement('div');
       questionContainer.classList.add('question-container');
 
@@ -362,7 +354,7 @@ script
     button.classList.add('answer-button');
     button.textContent = text;
 
-    button.addEventListener('click', () = {
+    button.addEventListener('click', () => {
       checkAnswer(questionIndex, answer, button);
     });
 
@@ -380,18 +372,18 @@ script
       button.classList.add('incorrect-button');
     }
 
-     Disable buttons after the user has made a choice
-    const buttons = document.querySelectorAll(`[data-question=${questionIndex}]`);
-    buttons.forEach((button) = {
+    // Disable buttons after the user has made a choice
+    const buttons = document.querySelectorAll(`[data-question="${questionIndex}"]`);
+    buttons.forEach((button) => {
       button.disabled = true;
     });
   }
 
   document.addEventListener('DOMContentLoaded', renderQuestions);
-script
-head
-body
-  h1DEEP LEARNING QUIZh1
-  div id=containerdiv
-body
-html
+</script>
+</head>
+<body>
+  <h1>DEEP LEARNING QUIZ</h1>
+  <div id="container"></div>
+</body>
+</html>
