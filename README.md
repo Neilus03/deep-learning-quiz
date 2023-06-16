@@ -1,5 +1,5 @@
 # DEEP LEARNING QUIZ
-Enjoy learning with this DL quiz:
+Enjoy learning with this DL basics quiz:
 https://neilus03.github.io/deep-learning-quiz/
 
 
