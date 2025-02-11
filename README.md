@@ -16,4 +16,4 @@ Contents:
 5: Convolutional Neural Networks
 
 
-By: Neil de la Fuente
+By: Neil de la Fuente 
