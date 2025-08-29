@@ -13,7 +13,7 @@ Contents:
 
 4: Optimisation, Regularisation, Batch Normalisation
 
-5: Convolutional Neural Networks
+5: Convolutional Neural Networks 
 
 
 By: Neil de la Fuente 
